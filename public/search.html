@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find a Pandit — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="dash-header pb-5"><div class="container">
+    <h1 class="h2 mb-1">Find a Pandit</h1>
+    <p class="mb-0 opacity-75">Search verified pandits by city, ceremony, date, language and budget.</p>
+  </div></div>
+  <div class="container dash-body">
+    <div class="row g-4">
+      <aside class="col-lg-3">
+        <form class="pf-card p-3 filters-card" id="filters" novalidate>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0" style="font-family:Poppins,sans-serif">Filters</h5>
+            <button type="button" class="btn btn-link btn-sm p-0" id="resetFilters">Reset</button>
+          </div>
+          <div class="mb-2"><label class="form-label small" for="fQ">Name or keyword</label><input class="form-control form-control-sm" id="fQ" name="q" placeholder="e.g. Sharma"></div>
+          <div class="mb-2"><label class="form-label small" for="fCity">City</label><select class="form-select form-select-sm" id="fCity" name="city"><option value="">All cities</option></select></div>
+          <div class="mb-2"><label class="form-label small" for="fLocality">Locality / service area</label><input class="form-control form-control-sm" id="fLocality" name="locality" placeholder="e.g. Dwarka"></div>
+          <div class="mb-2"><label class="form-label small" for="fCat">Puja type</label><select class="form-select form-select-sm" id="fCat" name="category"><option value="">All ceremonies</option></select></div>
+          <div class="mb-2"><label class="form-label small" for="fDate">Ceremony date</label><input type="date" class="form-control form-control-sm" id="fDate" name="date"></div>
+          <div class="mb-2"><label class="form-label small" for="fAvail">Availability</label>
+            <select class="form-select form-select-sm" id="fAvail" name="available"><option value="">Any time</option><option value="week">Has open slots in the next 7 days</option></select></div>
+          <div class="mb-2"><label class="form-label small" for="fLang">Language</label><select class="form-select form-select-sm" id="fLang" name="language"><option value="">Any language</option></select></div>
+          <div class="mb-2"><label class="form-label small" for="fExp">Minimum experience</label>
+            <select class="form-select form-select-sm" id="fExp" name="min_experience"><option value="">Any</option><option value="5">5+ years</option><option value="10">10+ years</option><option value="20">20+ years</option></select></div>
+          <div class="mb-2"><label class="form-label small">Price range (starting price, ₹)</label>
+            <div class="d-flex gap-2"><input type="number" min="0" class="form-control form-control-sm" name="min_price" placeholder="Min" aria-label="Minimum price">
+              <input type="number" min="0" class="form-control form-control-sm" name="max_price" placeholder="Max" aria-label="Maximum price"></div></div>
+          <div class="mb-2"><label class="form-label small" for="fRating">Rating</label>
+            <select class="form-select form-select-sm" id="fRating" name="min_rating"><option value="">Any rating</option><option value="4.5">4.5 ★ & above</option><option value="4">4 ★ & above</option><option value="3">3 ★ & above</option></select></div>
+          <div class="mb-1"><label class="form-label small" for="fMode">Service mode</label>
+            <select class="form-select form-select-sm" id="fMode" name="mode"><option value="">Online or in person</option><option value="in_person">In person</option><option value="online">Online</option></select></div>
+        </form>
+      </aside>
+      <section class="col-lg-9">
+        <div class="pf-card p-3 mb-3 d-flex flex-wrap gap-2 align-items-center justify-content-between">
+          <div id="resultCount" class="fw-semibold" aria-live="polite">Searching…</div>
+          <div class="d-flex align-items-center gap-2"><label for="sort" class="small text-muted">Sort by</label>
+            <select class="form-select form-select-sm w-auto" id="sort" name="sort" form="filters">
+              <option value="recommended">Recommended</option><option value="rating">Highest rated</option><option value="experience">Most experienced</option>
+              <option value="price_asc">Lowest price</option><option value="price_desc">Highest price</option></select></div>
+        </div>
+        <div id="sampleNote" class="notice mb-3 d-none"><i class="bi bi-info-circle me-1"></i> Profiles marked <span class="badge badge-sample rounded-pill">Sample profile</span> are development sample data.</div>
+        <div class="row g-4" id="results"></div>
+        <div class="text-center mt-4"><button class="btn btn-outline-maroon d-none" id="loadMore">Load more</button></div>
+      </section>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/search.js"></script>
+</body>
+</html>

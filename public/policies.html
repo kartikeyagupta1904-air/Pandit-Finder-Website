@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Policies — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="dash-header"><div class="container"><h1 class="h2 mb-0">Policies</h1></div></div>
+  <div class="container dash-body" style="max-width:860px">
+    <div class="pf-card p-4 p-md-5">
+      <div class="notice small mb-4">These policies describe how this application behaves. Have them reviewed by a qualified professional before using the platform commercially.</div>
+      <h2 id="privacy" class="h4">Privacy policy</h2>
+      <ul>
+        <li>We collect your name, email, password (stored only as a secure bcrypt hash), and optionally your phone and city.</li>
+        <li>Pandit phone numbers, emails and identity documents are <strong>never shown publicly</strong>. Contact details are shared only between the customer and pandit of an accepted, confirmed or completed booking, and for pandits only via their chosen contact method.</li>
+        <li>Verification documents are stored outside the public website, visible only to administrators (every view is recorded in an audit log) and automatically deleted after the configured retention period once a decision is made.</li>
+        <li>Pandit profiles show an approximate city area on maps — never a home address.</li>
+        <li>Reviews display the reviewer's first name and last initial only.</li>
+        <li>We do not store card details. When online payments are enabled, they are handled by the payment gateway.</li>
+      </ul>
+      <h2 id="terms" class="h4 mt-4">Terms of use</h2>
+      <ul>
+        <li>Pandit Finder connects customers with independent pandits. Pandits set their own services, prices and availability.</li>
+        <li>A booking request is not a confirmed booking until the pandit accepts it and the customer confirms.</li>
+        <li>Information marked "self-declared" is provided by the pandit and has not been independently verified.</li>
+        <li>Reviews may be written only for completed bookings and may be moderated if they break these terms.</li>
+        <li>Accounts that misuse the platform may be suspended.</li>
+      </ul>
+      <h2 id="cancellation" class="h4 mt-4">Cancellation & rescheduling policy</h2>
+      <ul>
+        <li>Pending requests can be cancelled by the customer at any time.</li>
+        <li>Accepted or confirmed bookings can be cancelled or rescheduled by the customer up to <strong class="cancel-hours">24</strong> hours before the ceremony start time. After that, please contact the pandit or support.</li>
+        <li>A rescheduled booking returns to <em>Pending</em> and must be accepted again by the pandit.</li>
+        <li>Pandits may cancel accepted bookings before the ceremony with a reason; the customer is notified immediately.</li>
+        <li>Refunds for online payments on cancelled bookings are processed by an administrator through the payment gateway.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/policies.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Become a Pandit — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="pf-hero" style="padding:3.5rem 0 5rem"><div class="container"><div class="row align-items-center">
+    <div class="col-lg-8"><div class="tagline mb-2">For pandits & purohits</div><h1>Become a Registered Pandit</h1>
+      <p class="lead mb-0">Create your profile, list your services, publish your availability and receive booking requests from families in your city.</p></div>
+  </div></div></section>
+  <div class="container" style="margin-top:-3rem">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <form class="pf-card p-4 p-md-5" id="applyForm" novalidate enctype="multipart/form-data">
+          <div id="loggedInNote" class="alert alert-warning d-none">You are logged in. Please <a href="#" id="logoutLink">log out</a> to create a separate pandit account.</div>
+          <div class="form-alert d-none"></div>
+
+          <h4 class="mb-3">1. Personal details</h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6"><label class="form-label" for="aName">Full name *</label><input class="form-control" id="aName" name="name" required minlength="2" maxlength="100" placeholder="Pt. Ramesh Sharma"></div>
+            <div class="col-md-6"><label class="form-label" for="aPhoto">Profile photograph</label><input type="file" class="form-control" id="aPhoto" name="photo" accept="image/jpeg,image/png,image/webp"><div class="form-text">JPG, PNG or WebP, up to 2 MB. Shown publicly.</div></div>
+            <div class="col-md-6"><label class="form-label" for="aEmail">Email address *</label><input type="email" class="form-control" id="aEmail" name="email" required autocomplete="email"></div>
+            <div class="col-md-6"><label class="form-label" for="aPhone">Phone number *</label><input class="form-control" id="aPhone" name="phone" required autocomplete="tel" placeholder="+91 98765 43210"><div class="form-text">Kept private; shared only with confirmed customers if you choose phone as contact method.</div></div>
+            <div class="col-md-6"><label class="form-label" for="aPass">Password *</label><input type="password" class="form-control" id="aPass" name="password" required minlength="8" autocomplete="new-password"><div class="form-text">8+ characters with letters and numbers.</div></div>
+            <div class="col-md-6"><label class="form-label" for="aContact">Preferred contact method</label>
+              <select class="form-select" id="aContact" name="preferred_contact"><option value="platform">Platform messages only</option><option value="phone">Phone (after booking is accepted)</option><option value="email">Email (after booking is accepted)</option></select></div>
+          </div>
+
+          <h4 class="mb-3">2. Location & languages</h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6"><label class="form-label" for="aCity">City *</label><select class="form-select" id="aCity" name="city_id" required><option value="">Choose city</option></select></div>
+            <div class="col-md-6"><label class="form-label" for="aAreas">Service areas / localities *</label><input class="form-control" id="aAreas" name="service_areas" required placeholder="Dwarka, Janakpuri, Rajouri Garden"><div class="form-text">Separate with commas.</div></div>
+            <div class="col-12"><label class="form-label">Languages spoken *</label><div id="langBoxes" class="d-flex flex-wrap gap-2"></div></div>
+          </div>
+
+          <h4 class="mb-3">3. Experience & specializations</h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4"><label class="form-label" for="aExp">Years of experience *</label><input type="number" class="form-control" id="aExp" name="experience_years" min="0" max="80" required></div>
+            <div class="col-md-8 d-flex align-items-end"><div class="form-check"><input class="form-check-input" type="checkbox" id="aOnline" name="offers_online"><label class="form-check-label" for="aOnline">I can perform pujas online (video call)</label></div></div>
+            <div class="col-12"><label class="form-label">Puja specializations *</label><div id="specBoxes" class="d-flex flex-wrap gap-2"></div></div>
+            <div class="col-12"><label class="form-label" for="aBio">Short biography *</label><textarea class="form-control" id="aBio" name="bio" rows="4" minlength="30" maxlength="2000" required placeholder="Your training, tradition, the ceremonies you perform…"></textarea></div>
+          </div>
+
+          <h4 class="mb-3">4. Services & prices</h4>
+          <div id="serviceRows" class="d-grid gap-3 mb-2"></div>
+          <button type="button" class="btn btn-sm btn-outline-maroon mb-4" id="addService"><i class="bi bi-plus"></i> Add another service</button>
+
+          <h4 class="mb-3">5. Weekly availability</h4>
+          <p class="small text-muted">We'll create availability for the next 8 weeks. You can adjust it anytime from your dashboard.</p>
+          <div class="d-flex flex-wrap gap-2 mb-2" id="dayBoxes"></div>
+          <div class="row g-3 mb-4"><div class="col-6 col-md-3"><label class="form-label" for="aStart">From</label><input type="time" class="form-control" id="aStart" name="availability_start" value="07:00" step="1800"></div>
+            <div class="col-6 col-md-3"><label class="form-label" for="aEnd">To</label><input type="time" class="form-control" id="aEnd" name="availability_end" value="19:00" step="1800"></div></div>
+
+          <h4 class="mb-3">6. Verification documents</h4>
+          <div class="notice mb-3 small"><i class="bi bi-shield-lock"></i> Documents are stored privately and are visible only to Pandit Finder administrators for verification. They are never shown on your public profile and are deleted after the review retention period.</div>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6"><label class="form-label" for="aId">Identity document * <span class="small text-muted">(Aadhaar/PAN/Voter ID)</span></label><input type="file" class="form-control" id="aId" name="identity_document" accept="application/pdf,image/jpeg,image/png,image/webp" required><div class="form-text">PDF, JPG or PNG up to 5 MB. You may mask the Aadhaar number except the last 4 digits.</div></div>
+            <div class="col-md-6"><label class="form-label" for="aCert">Certificate <span class="small text-muted">(optional)</span></label><input type="file" class="form-control" id="aCert" name="certificate_document" accept="application/pdf,image/jpeg,image/png,image/webp"><div class="form-text">Gurukul / Sanskrit / institution certificate.</div></div>
+          </div>
+          <div class="form-check mb-4"><input class="form-check-input" type="checkbox" id="aConsent" name="consent" required><label class="form-check-label small" for="aConsent">
+            I declare the information above is true, and I consent to Pandit Finder reviewing my documents for verification as described in the <a href="/policies.html#privacy" target="_blank">privacy policy</a>.</label></div>
+          <div class="d-grid"><button class="btn btn-primary btn-lg" id="applyBtn">Submit application</button></div>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <div class="pf-card p-4 position-sticky" style="top:90px"><h5>How verification works</h5>
+          <ol class="small ps-3 mb-0">
+            <li class="mb-2">Submit this application with your identity document.</li>
+            <li class="mb-2">Your application status becomes <strong>Pending</strong>.</li>
+            <li class="mb-2">An administrator reviews your details and documents.</li>
+            <li class="mb-2">You're notified when you're approved or if anything needs correcting.</li>
+            <li>Approved profiles get a <span class="badge badge-verified rounded-pill">Verified</span> badge and appear in search.</li>
+          </ol></div>
+      </div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/become.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account Settings — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="dash-header"><div class="container"><h1 class="h2 mb-0">Account Settings</h1></div></div>
+  <div class="container dash-body"><div class="row g-4">
+    <div class="col-lg-6"><form class="pf-card p-4" id="profileForm" novalidate><h5>Profile</h5><div class="form-alert d-none"></div>
+      <div id="panditNote" class="notice small mb-3 d-none">Pandits manage their full public profile from the <a href="/pandit-dashboard.html">pandit dashboard</a>.</div>
+      <div class="mb-2"><label class="form-label" for="aName">Name</label><input class="form-control" id="aName" name="name" required></div>
+      <div class="mb-2"><label class="form-label" for="aEmail">Email</label><input class="form-control" id="aEmail" disabled></div>
+      <div class="mb-2"><label class="form-label" for="aPhone">Phone</label><input class="form-control" id="aPhone" name="phone"></div>
+      <div id="customerFields"><div class="mb-2"><label class="form-label" for="aCity">City</label><input class="form-control" id="aCity" name="city"></div>
+        <div class="mb-3"><label class="form-label" for="aLang">Preferred language</label><input class="form-control" id="aLang" name="preferred_language"></div></div>
+      <button class="btn btn-primary">Save profile</button></form></div>
+    <div class="col-lg-6"><form class="pf-card p-4" id="pwForm" novalidate><h5>Change password</h5><div class="form-alert d-none"></div>
+      <div class="mb-2"><label class="form-label" for="pwCur">Current password</label><input type="password" class="form-control" id="pwCur" name="current_password" autocomplete="current-password" required></div>
+      <div class="mb-2"><label class="form-label" for="pwNew">New password</label><input type="password" class="form-control" id="pwNew" name="new_password" autocomplete="new-password" required><div class="form-text">8+ characters with letters and numbers. Other devices will be signed out.</div></div>
+      <div class="mb-3"><label class="form-label" for="pwNew2">Confirm new password</label><input type="password" class="form-control" id="pwNew2" name="new_password2" autocomplete="new-password" required></div>
+      <button class="btn btn-maroon">Change password</button></form></div>
+  </div></div>
+</main>
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/account.js"></script>
+</body>
+</html>

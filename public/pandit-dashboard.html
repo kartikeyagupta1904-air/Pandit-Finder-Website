@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pandit Dashboard — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="dash-header"><div class="container d-flex flex-wrap justify-content-between align-items-end gap-2">
+    <div><div class="small opacity-75">Pandit dashboard</div><h1 class="h2 mb-0" id="pdName">Namaste</h1></div>
+    <a href="#" id="viewProfile" class="btn btn-light text-maroon fw-semibold d-none"><i class="bi bi-eye"></i> View public profile</a></div></div>
+  <div class="container dash-body">
+    <div id="statusBanner"></div>
+    <div class="row g-3 mb-4" id="stats"></div>
+    <ul class="nav nav-pills pf-tabs mb-3" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tOverview" type="button">Requests & upcoming</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tBookings" type="button">Booking history</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tServices" type="button">Services & pricing</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tAvail" type="button">Availability</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tProfile" type="button">Profile</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tReviews" type="button" id="reviewsTab">Reviews</button></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="tOverview"><div class="row g-4">
+        <div class="col-lg-7"><div class="pf-card"><div class="p-3 border-bottom"><h5 class="mb-0">Pending requests</h5></div><div id="pendingList"></div></div></div>
+        <div class="col-lg-5"><div class="pf-card mb-4"><div class="p-3 border-bottom"><h5 class="mb-0">Upcoming ceremonies</h5></div><div id="upcomingList"></div></div>
+          <div class="pf-card p-4"><h5>Profile completion</h5><div id="completion"></div></div></div>
+      </div></div>
+      <div class="tab-pane fade" id="tBookings"><div class="pf-card">
+        <div class="p-3 border-bottom d-flex gap-2 align-items-center"><label for="histFilter" class="small text-muted">Status</label>
+          <select id="histFilter" class="form-select form-select-sm w-auto"><option value="">All</option><option value="pending">Pending</option><option value="accepted">Accepted</option><option value="confirmed">Confirmed</option><option value="completed">Completed</option><option value="rejected">Rejected</option><option value="cancelled">Cancelled</option></select></div>
+        <div class="table-responsive"><table class="table mb-0 align-middle"><thead><tr><th>Booking</th><th>Date</th><th>Customer</th><th>Service</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody id="histBody"></tbody></table></div></div></div>
+      <div class="tab-pane fade" id="tServices"><div class="row g-4">
+        <div class="col-lg-7"><div class="pf-card"><div class="p-3 border-bottom"><h5 class="mb-0">Your services</h5></div><div id="serviceList"></div></div></div>
+        <div class="col-lg-5"><form class="pf-card p-4" id="serviceForm" novalidate><h5 id="svcFormTitle">Add a service</h5><div class="form-alert d-none"></div>
+          <input type="hidden" name="id">
+          <div class="mb-2"><label class="form-label" for="sCat">Ceremony type</label><select class="form-select" id="sCat" name="category_id"></select></div>
+          <div class="mb-2"><label class="form-label" for="sName">Service name</label><input class="form-control" id="sName" name="name" required maxlength="120"></div>
+          <div class="mb-2"><label class="form-label" for="sDesc">Description</label><textarea class="form-control" id="sDesc" name="description" rows="2" maxlength="1000"></textarea></div>
+          <div class="row g-2 mb-2"><div class="col-6"><label class="form-label" for="sPrice">Price (₹)</label><input type="number" min="0" class="form-control" id="sPrice" name="price" required></div>
+            <div class="col-6"><label class="form-label" for="sDur">Duration</label><select class="form-select" id="sDur" name="duration_minutes"></select></div>
+            <div class="col-6"><label class="form-label" for="sMode">Mode</label><select class="form-select" id="sMode" name="mode"><option value="in_person">In person</option><option value="online">Online</option><option value="both">Both</option></select></div>
+            <div class="col-6"><label class="form-label" for="sTravel">Travel charge (₹)</label><input type="number" min="0" class="form-control" id="sTravel" name="travel_charge" placeholder="0 = none"></div></div>
+          <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="sSamagri" name="samagri_included"><label class="form-check-label" for="sSamagri">Samagri included in price</label></div>
+          <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="sActive" name="is_active" checked><label class="form-check-label" for="sActive">Active (bookable)</label></div>
+          <div class="mb-3"><label class="form-label" for="sReq">Additional requirements</label><input class="form-control" id="sReq" name="requirements" maxlength="1000" placeholder="e.g. Space for havan kund"></div>
+          <div class="d-flex gap-2"><button class="btn btn-primary">Save service</button><button type="button" class="btn btn-light d-none" id="svcCancel">Cancel edit</button></div></form></div>
+      </div></div>
+      <div class="tab-pane fade" id="tAvail"><div class="row g-4">
+        <div class="col-lg-5">
+          <form class="pf-card p-4 mb-4" id="availForm" novalidate><h5>Add availability</h5><div class="form-alert d-none"></div>
+            <div class="mb-2"><div class="btn-group btn-group-sm" role="group"><input type="radio" class="btn-check" name="kind" id="kWeekly" value="weekly" checked><label class="btn btn-outline-maroon" for="kWeekly">Weekly</label>
+              <input type="radio" class="btn-check" name="kind" id="kDate" value="date"><label class="btn btn-outline-maroon" for="kDate">Specific date</label></div></div>
+            <div id="weeklyFields"><div class="d-flex flex-wrap gap-1 mb-2" id="availDays"></div>
+              <label class="form-label small" for="avWeeks">For the next</label><select class="form-select form-select-sm mb-2" id="avWeeks" name="weeks"><option value="2">2 weeks</option><option value="4" selected>4 weeks</option><option value="8">8 weeks</option><option value="12">12 weeks</option></select></div>
+            <div id="dateFields" class="d-none mb-2"><label class="form-label small" for="avDate">Date</label><input type="date" class="form-control form-control-sm" id="avDate" name="date"></div>
+            <div class="row g-2 mb-3"><div class="col-6"><label class="form-label small" for="avStart">From</label><input type="time" class="form-control form-control-sm" id="avStart" name="start_time" value="07:00" step="1800"></div>
+              <div class="col-6"><label class="form-label small" for="avEnd">To</label><input type="time" class="form-control form-control-sm" id="avEnd" name="end_time" value="12:00" step="1800"></div></div>
+            <button class="btn btn-primary btn-sm">Add availability</button></form>
+          <form class="pf-card p-4" id="blockForm" novalidate><h5>Block a date</h5><div class="form-alert d-none"></div>
+            <div class="row g-2 mb-2"><div class="col-6"><label class="form-label small" for="blDate">Date</label><input type="date" class="form-control form-control-sm" id="blDate" name="date" required></div>
+              <div class="col-6"><label class="form-label small" for="blReason">Reason (private)</label><input class="form-control form-control-sm" id="blReason" name="reason" maxlength="200"></div></div>
+            <button class="btn btn-outline-maroon btn-sm">Block date</button></form>
+        </div>
+        <div class="col-lg-7"><div class="pf-card"><div class="p-3 border-bottom d-flex justify-content-between"><h5 class="mb-0">Next 60 days</h5></div><div id="availList" class="p-3"></div></div></div>
+      </div></div>
+      <div class="tab-pane fade" id="tProfile"><div class="row g-4">
+        <div class="col-lg-4"><div class="pf-card p-4 text-center"><div id="photoBox" class="d-flex justify-content-center mb-3"></div>
+          <form id="photoForm"><label class="btn btn-sm btn-outline-maroon"><i class="bi bi-upload"></i> Upload new photo<input type="file" name="photo" accept="image/jpeg,image/png,image/webp" hidden></label></form>
+          <button class="btn btn-link btn-sm text-danger" id="removePhoto">Remove photo</button>
+          <hr><h6>Verification documents</h6><div id="docList" class="small text-start mb-2"></div>
+          <form id="docForm" class="text-start"><div class="input-group input-group-sm"><select class="form-select" name="doc_type" aria-label="Document type"><option value="identity">Identity</option><option value="address">Address</option><option value="certificate">Certificate</option><option value="other">Other</option></select>
+            <input type="file" class="form-control" name="document" accept="application/pdf,image/jpeg,image/png,image/webp" aria-label="Document file"></div>
+            <button class="btn btn-sm btn-outline-maroon mt-2">Upload document</button><div class="form-text">Private — visible only to administrators.</div></form></div></div>
+        <div class="col-lg-8"><form class="pf-card p-4" id="profileForm" novalidate><h5>Profile details</h5><div class="form-alert d-none"></div>
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label" for="pName">Full name</label><input class="form-control" id="pName" name="name" required></div>
+            <div class="col-md-6"><label class="form-label" for="pPhone">Phone (private)</label><input class="form-control" id="pPhone" name="phone" required></div>
+            <div class="col-md-6"><label class="form-label" for="pCity">City</label><select class="form-select" id="pCity" name="city_id"></select></div>
+            <div class="col-md-6"><label class="form-label" for="pExp">Years of experience</label><input type="number" min="0" max="80" class="form-control" id="pExp" name="experience_years"><div class="form-text">Changing this resets its "verified" mark until re-reviewed.</div></div>
+            <div class="col-12"><label class="form-label" for="pAreas">Service areas (comma separated)</label><input class="form-control" id="pAreas" name="service_areas"></div>
+            <div class="col-12"><label class="form-label">Languages</label><div id="pLangs" class="d-flex flex-wrap gap-2"></div></div>
+            <div class="col-12"><label class="form-label">Specializations</label><div id="pSpecs" class="d-flex flex-wrap gap-2"></div></div>
+            <div class="col-12"><label class="form-label" for="pBio">Biography</label><textarea class="form-control" id="pBio" name="bio" rows="5" maxlength="2000"></textarea></div>
+            <div class="col-md-6"><label class="form-label" for="pContact">Preferred contact</label><select class="form-select" id="pContact" name="preferred_contact"><option value="platform">Platform messages only</option><option value="phone">Phone (after acceptance)</option><option value="email">Email (after acceptance)</option></select></div>
+            <div class="col-md-6 d-flex align-items-end"><div class="form-check"><input class="form-check-input" type="checkbox" id="pOnline" name="offers_online"><label class="form-check-label" for="pOnline">I offer online pujas</label></div></div>
+          </div>
+          <button class="btn btn-primary mt-3">Save profile</button></form></div>
+      </div></div>
+      <div class="tab-pane fade" id="tReviews"><div class="pf-card p-3" id="reviewList"></div></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/pandit-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420">
+  <defs>
+    <linearGradient id="pot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2b14c"/><stop offset=".55" stop-color="#d98a2b"/><stop offset="1" stop-color="#a55a17"/></linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fae4f"/><stop offset="1" stop-color="#2f6d2c"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe7a3" stop-opacity=".9"/><stop offset="1" stop-color="#ffe7a3" stop-opacity="0"/></radialGradient>
+    <radialGradient id="coco" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#b07a4a"/><stop offset="1" stop-color="#6b4224"/></radialGradient>
+  </defs>
+  <circle cx="200" cy="200" r="190" fill="#fff" fill-opacity=".06"/>
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#f6ecc9" stroke-opacity=".35" stroke-dasharray="4 8"/>
+  <g transform="translate(200 120)">
+    <g fill="url(#leaf)">
+      <path d="M0 0 C-30 -10 -70 -40 -95 -20 C-70 -15 -40 5 0 10z"/>
+      <path d="M0 0 C30 -10 70 -40 95 -20 C70 -15 40 5 0 10z"/>
+      <path d="M0 0 C-20 -30 -40 -70 -20 -95 C-15 -65 -5 -35 0 5z"/>
+      <path d="M0 0 C20 -30 40 -70 20 -95 C15 -65 5 -35 0 5z"/>
+      <path d="M0 0 C-40 -25 -80 -70 -70 -90 C-50 -60 -25 -30 0 8z" opacity=".85"/>
+      <path d="M0 0 C40 -25 80 -70 70 -90 C50 -60 25 -30 0 8z" opacity=".85"/>
+    </g>
+    <ellipse cx="0" cy="-18" rx="34" ry="40" fill="url(#coco)"/>
+    <path d="M-30 -20 Q0 -5 30 -20" stroke="#c9a227" stroke-width="5" fill="none"/>
+  </g>
+  <path d="M140 150 h120 l-8 18 h-104z" fill="#c9a227"/>
+  <path d="M148 168 C90 200 95 300 150 330 h100 C305 300 310 200 252 168z" fill="url(#pot)"/>
+  <path d="M120 230 Q200 260 280 230" stroke="#7a1f2b" stroke-width="6" fill="none"/>
+  <path d="M118 250 Q200 282 282 250" stroke="#c9a227" stroke-width="3" fill="none"/>
+  <g fill="#7a1f2b" transform="translate(200 290)"><circle r="14"/><circle r="6" fill="#f6ecc9"/></g>
+  <text x="200" y="222" text-anchor="middle" font-family="serif" font-size="34" fill="#7a1f2b">ॐ</text>
+  <ellipse cx="200" cy="335" rx="70" ry="10" fill="#5a1520" opacity=".35"/>
+  <g transform="translate(305 340)">
+    <circle cx="0" cy="-48" r="30" fill="url(#glow)"/>
+    <path d="M0 -70 C10 -55 12 -45 0 -35 C-12 -45 -10 -55 0 -70z" fill="#ffb627"/>
+    <path d="M0 -60 C5 -52 6 -46 0 -40 C-6 -46 -5 -52 0 -60z" fill="#fff1c1"/>
+    <path d="M-34 -30 h68 C30 0 -30 0 -34 -30z" fill="#d98a2b"/>
+    <path d="M-34 -30 h68" stroke="#c9a227" stroke-width="4"/>
+  </g>
+  <g transform="translate(95 345)">
+    <path d="M-28 -18 h56 C24 6 -24 6 -28 -18z" fill="#d98a2b"/>
+    <g fill="#e8772e"><circle cx="-12" cy="-24" r="8"/><circle cx="2" cy="-28" r="8"/><circle cx="14" cy="-22" r="8"/></g>
+    <g fill="#ffd166"><circle cx="-5" cy="-20" r="5"/><circle cx="8" cy="-18" r="5"/></g>
+  </g>
+</svg>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pandit Finder — Find the Right Pandit for Every Puja</title>
+  <meta name="description" content="Find verified pandits for griha pravesh, Satyanarayan katha, Rudrabhishek, weddings, havans and more in your city.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <!-- Hero -->
+  <section class="pf-hero">
+    <img src="/images/mandala.svg" alt="" class="pf-mandala">
+    <div class="container position-relative">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="tagline mb-3">Find Your Pandit. Celebrate Your Traditions.</div>
+          <h1 class="mb-3">Find the Right Pandit for Your Sacred Moments</h1>
+          <p class="lead mb-4">Discover experienced pandits for pujas, havans, weddings, and traditional ceremonies in your city.</p>
+          <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start small" id="heroStats"></div>
+        </div>
+        <div class="col-lg-5 text-center d-none d-lg-block">
+          <img src="/images/hero-kalash.svg" alt="Illustration of a decorated kalash with a lit diya" class="pf-hero-art">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search -->
+  <div class="container">
+    <form class="pf-search-card" id="heroSearch" action="/search.html" method="get">
+      <div class="row g-2 align-items-center">
+        <div class="col-md-6 col-lg-3">
+          <label class="visually-hidden" for="hsCity">City or location</label>
+          <div class="input-group"><span class="input-group-text bg-transparent border-0"><i class="bi bi-geo-alt text-saffron"></i></span>
+            <input class="form-control" list="cityList" id="hsCity" name="city" placeholder="City (e.g. Delhi)" autocomplete="off"></div>
+          <datalist id="cityList"></datalist>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label class="visually-hidden" for="hsCat">Puja or ceremony</label>
+          <select class="form-select" id="hsCat" name="category"><option value="">Any puja or ceremony</option></select>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label class="visually-hidden" for="hsDate">Preferred date</label>
+          <input type="date" class="form-control" id="hsDate" name="date" aria-label="Preferred date">
+        </div>
+        <div class="col-md-6 col-lg-3 d-grid">
+          <button class="btn btn-primary btn-lg" type="submit"><i class="bi bi-search me-1"></i> Search Pandits</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Categories -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-kicker">Ceremonies</div>
+        <h2 class="section-title mt-1">Popular Puja Categories</h2>
+        <div class="divider-gold mx-auto mt-3"></div>
+      </div>
+      <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-5" id="categoryGrid"></div>
+    </div>
+  </section>
+
+  <!-- Recommended pandits -->
+  <section class="section bg-saffron-soft pt-5">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-2">
+        <div><div class="section-kicker">Recommended</div><h2 class="section-title mt-1 mb-0">Pandits Families Trust</h2></div>
+        <a href="/search.html" class="btn btn-outline-maroon">View all pandits <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div id="sampleNote" class="notice mb-3 d-none"><i class="bi bi-info-circle me-1"></i> Profiles marked <span class="badge badge-sample rounded-pill">Sample profile</span> are development sample data, not real pandits.</div>
+      <div class="row g-4" id="recommended"><div class="text-center text-muted py-5"><div class="spinner-border text-warning"></div></div></div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-kicker">Simple & transparent</div>
+        <h2 class="section-title mt-1">How It Works</h2>
+        <div class="divider-gold mx-auto mt-3"></div>
+      </div>
+      <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-5 text-center">
+        <div class="col fade-up"><div class="step-num">1</div><h5>Search</h5><p class="text-muted small">Search by city, ceremony, date and language.</p></div>
+        <div class="col fade-up"><div class="step-num">2</div><h5>Compare</h5><p class="text-muted small">Compare profiles, services, prices and genuine reviews.</p></div>
+        <div class="col fade-up"><div class="step-num">3</div><h5>Pick a slot</h5><p class="text-muted small">Choose a date and time from the pandit's real availability.</p></div>
+        <div class="col fade-up"><div class="step-num">4</div><h5>Request</h5><p class="text-muted small">Submit a booking request with your ceremony details.</p></div>
+        <div class="col fade-up"><div class="step-num">5</div><h5>Confirm</h5><p class="text-muted small">Once the pandit accepts, confirm and coordinate through the platform.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cities -->
+  <section class="section bg-white pt-5">
+    <div class="container">
+      <div class="text-center mb-4"><div class="section-kicker">Across India</div><h2 class="section-title mt-1">Popular Cities</h2><div class="divider-gold mx-auto mt-3"></div></div>
+      <div class="d-flex flex-wrap justify-content-center gap-2" id="cityChips"></div>
+    </div>
+  </section>
+
+  <!-- Why choose -->
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+          <div class="section-kicker">Why Pandit Finder?</div>
+          <h2 class="section-title mt-1">Tradition, made simple and trustworthy</h2>
+          <p class="text-muted">We help families find the right pandit with honest information — and we never show availability or reviews that aren't backed by real data.</p>
+          <a href="/search.html" class="btn btn-primary mt-2">Find a pandit</a>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <div class="col-sm-6 fade-up"><div class="pf-card p-4 h-100"><div class="stat-icon mb-3"><i class="bi bi-shield-check"></i></div><h5>Verified pandits</h5><p class="small text-muted mb-0">Identity documents are reviewed by our team before a profile is marked verified.</p></div></div>
+            <div class="col-sm-6 fade-up"><div class="pf-card p-4 h-100"><div class="stat-icon mb-3"><i class="bi bi-calendar2-check"></i></div><h5>Real availability</h5><p class="small text-muted mb-0">Slots come from each pandit's own calendar and are re-checked when you book.</p></div></div>
+            <div class="col-sm-6 fade-up"><div class="pf-card p-4 h-100"><div class="stat-icon mb-3"><i class="bi bi-cash-coin"></i></div><h5>Clear pricing</h5><p class="small text-muted mb-0">See service price, samagri and travel charges before you send a request.</p></div></div>
+            <div class="col-sm-6 fade-up"><div class="pf-card p-4 h-100"><div class="stat-icon mb-3"><i class="bi bi-lock"></i></div><h5>Privacy first</h5><p class="small text-muted mb-0">Phone numbers and addresses are shared only between parties of an accepted booking.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section bg-saffron-soft">
+    <div class="container">
+      <div class="text-center mb-5"><div class="section-kicker">Testimonials</div><h2 class="section-title mt-1">What Customers Say</h2><div class="divider-gold mx-auto mt-3"></div></div>
+      <div class="row g-4" id="reviewsGrid"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container" style="max-width:860px">
+      <div class="text-center mb-5"><div class="section-kicker">Questions</div><h2 class="section-title mt-1">Frequently Asked Questions</h2><div class="divider-gold mx-auto mt-3"></div></div>
+      <div class="accordion" id="faqAcc">
+        <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1">Is my booking confirmed as soon as I submit it?</button></h3>
+          <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">No. Submitting sends a <strong>booking request</strong>. It is confirmed only after the pandit accepts it and you confirm. You'll get a notification at each step.</div></div></div>
+        <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">How are pandits verified?</button></h3>
+          <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Pandits submit identity documents (and optionally certificates) which our administrators review. Profiles clearly show which details are verified and which are self-declared by the pandit.</div></div></div>
+        <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">Who arranges the puja samagri?</button></h3>
+          <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Each service states whether samagri is included. If not, the pandit can share a list through booking messages once your request is accepted.</div></div></div>
+        <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4">Can I cancel or reschedule?</button></h3>
+          <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Yes. Pending requests can be cancelled anytime. Accepted bookings can be cancelled or rescheduled up to <span class="cancel-hours">24</span> hours before the ceremony. See our <a href="/policies.html#cancellation">cancellation policy</a>.</div></div></div>
+        <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f5">How do I pay?</button></h3>
+          <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">You can choose <strong>Pay later</strong> and pay the pandit directly. When online payments are enabled on the platform, you can also pay securely through the payment gateway after the pandit accepts.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Become a pandit CTA -->
+  <section class="pb-2">
+    <div class="container">
+      <div class="pf-card p-4 p-lg-5 text-white" style="background:linear-gradient(135deg,var(--pf-saffron-dark),var(--pf-maroon));border:none">
+        <div class="row align-items-center g-3">
+          <div class="col-lg-8"><h2 class="text-white mb-2">Are you a pandit?</h2><p class="mb-0 opacity-75">Join Pandit Finder, manage your services and calendar, and connect with families in your city.</p></div>
+          <div class="col-lg-4 text-lg-end"><a href="/become-pandit.html" class="btn btn-light btn-lg text-maroon fw-semibold">Become a registered pandit</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

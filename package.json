@@ -1,0 +1,35 @@
+{
+  "name": "pandit-finder",
+  "version": "1.0.0",
+  "description": "Pandit Finder Ã¢â‚¬â€ Find the Right Pandit for Every Puja. Full-stack booking platform (Node.js, Express, SQLite).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "migrate": "node src/database/migrate.js",
+    "seed": "node src/database/seed.js",
+    "create-admin": "node src/database/create-admin.js",
+    "test": "node --test --test-concurrency=1 tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "chart.js": "^4.4.1",
+    "dotenv": "^18.0.9",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.1",
+    "express-session": "^1.19.0",
+    "helmet": "^8.3.0",
+    "leaflet": "^1.9.4",
+    "multer": "^2.5.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.1"
+  }
+}

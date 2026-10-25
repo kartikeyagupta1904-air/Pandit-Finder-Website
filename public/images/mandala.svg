@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200" fill="none" stroke="#fff" stroke-width="1.2">
+  <circle r="96"/><circle r="80"/><circle r="40"/><circle r="20"/>
+  <g id="p"><path d="M0 -20 C12 -40 12 -60 0 -80 C-12 -60 -12 -40 0 -20z"/><path d="M0 -80 C8 -86 8 -92 0 -96 C-8 -92 -8 -86 0 -80z"/></g>
+  <use href="#p" transform="rotate(30)"/><use href="#p" transform="rotate(60)"/><use href="#p" transform="rotate(90)"/>
+  <use href="#p" transform="rotate(120)"/><use href="#p" transform="rotate(150)"/><use href="#p" transform="rotate(180)"/>
+  <use href="#p" transform="rotate(210)"/><use href="#p" transform="rotate(240)"/><use href="#p" transform="rotate(270)"/>
+  <use href="#p" transform="rotate(300)"/><use href="#p" transform="rotate(330)"/>
+</svg>

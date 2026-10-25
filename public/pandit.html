@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pandit Profile — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main id="profile">
+  <div class="text-center py-5"><div class="spinner-border text-warning"></div></div>
+</main>
+
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportTitle" aria-hidden="true"><div class="modal-dialog"><form class="modal-content" id="reportForm">
+  <div class="modal-header"><h5 class="modal-title" id="reportTitle">Report this profile</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body">
+    <div class="form-alert d-none"></div>
+    <div class="mb-2"><label class="form-label" for="rpSubject">Reason</label>
+      <select class="form-select" id="rpSubject" name="subject"><option>Incorrect or misleading information</option><option>Suspected fake profile</option><option>Inappropriate behaviour</option><option>Other</option></select></div>
+    <div><label class="form-label" for="rpDetails">Details</label><textarea class="form-control" id="rpDetails" name="details" rows="4" required minlength="10" maxlength="3000"></textarea></div>
+  </div>
+  <div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-maroon">Submit report</button></div>
+</form></div></div>
+
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/leaflet/leaflet.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/calendar.js"></script>
+<script src="/js/pandit.js"></script>
+</body>
+</html>

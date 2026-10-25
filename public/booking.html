@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking Details — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="dash-header"><div class="container"><a href="#" id="backLink" class="text-white-50 small text-decoration-none"><i class="bi bi-arrow-left"></i> Back to dashboard</a>
+    <h1 class="h2 mb-0 mt-1" id="bkTitle">Booking</h1></div></div>
+  <div class="container dash-body" id="bkRoot"><div class="text-center py-5"><div class="spinner-border text-warning"></div></div></div>
+</main>
+
+<!-- Generic reason / confirmation modal -->
+<div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="amTitle" aria-hidden="true"><div class="modal-dialog"><form class="modal-content" id="actionForm" novalidate>
+  <div class="modal-header"><h5 class="modal-title" id="amTitle"></h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body"><div class="form-alert d-none"></div><div id="amBody"></div></div>
+  <div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Go back</button><button class="btn btn-maroon" id="amSubmit">Confirm</button></div>
+</form></div></div>
+
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/calendar.js"></script>
+<script src="/js/booking.js"></script>
+</body>
+</html>

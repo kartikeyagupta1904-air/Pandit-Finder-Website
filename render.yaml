@@ -1,0 +1,50 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Creates one web service with a persistent disk for the SQLite database and uploads.
+services:
+  - type: web
+    name: pandit-finder
+    runtime: node
+    plan: starter            # a persistent disk is not available on the free plan
+    region: singapore        # closest Render region to India
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
+    disk:
+      name: pandit-finder-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: TZ
+        value: Asia/Kolkata
+      - key: SESSION_SECRET
+        generateValue: true  # Render generates a random secret once
+      - key: DATABASE_PATH
+        value: /var/data/pandit-finder.db
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SHOW_SAMPLE_DATA
+        value: "0"
+      - key: LOGIN_RATE_LIMIT
+        value: "10"
+      # Optional integrations — fill in later from the Render dashboard (Environment tab).
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false

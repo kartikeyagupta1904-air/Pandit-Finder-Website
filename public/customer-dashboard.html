@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Dashboard — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="dash-header"><div class="container d-flex flex-wrap justify-content-between align-items-end gap-2">
+    <div><div class="small opacity-75">Customer dashboard</div><h1 class="h2 mb-0" id="welcome">Namaste</h1></div>
+    <a href="/search.html" class="btn btn-light text-maroon fw-semibold"><i class="bi bi-search"></i> Find a pandit</a></div></div>
+  <div class="container dash-body">
+    <div class="row g-3 mb-4" id="stats"></div>
+    <ul class="nav nav-pills pf-tabs mb-3" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tUpcoming" type="button">Upcoming</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tPending" type="button">Pending requests</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tCompleted" type="button">Completed</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tCancelled" type="button">Cancelled & declined</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tFavs" type="button">Saved pandits</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tComplaints" type="button">Support</button></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="tUpcoming"><div class="pf-card" data-list="upcoming"></div></div>
+      <div class="tab-pane fade" id="tPending"><div class="pf-card" data-list="pending"></div></div>
+      <div class="tab-pane fade" id="tCompleted"><div class="pf-card" data-list="completed"></div></div>
+      <div class="tab-pane fade" id="tCancelled"><div class="pf-card" data-list="closed"></div></div>
+      <div class="tab-pane fade" id="tFavs"><div class="row g-4" id="favs"></div></div>
+      <div class="tab-pane fade" id="tComplaints">
+        <div class="row g-4"><div class="col-lg-6"><form class="pf-card p-4" id="complaintForm" novalidate><h5>Raise a complaint</h5><div class="form-alert d-none"></div>
+          <div class="mb-2"><label class="form-label" for="cBooking">Related booking (optional)</label><select class="form-select" id="cBooking" name="booking_id"><option value="">None</option></select></div>
+          <div class="mb-2"><label class="form-label" for="cSubject">Subject</label><input class="form-control" id="cSubject" name="subject" required maxlength="150"></div>
+          <div class="mb-3"><label class="form-label" for="cDetails">Details</label><textarea class="form-control" id="cDetails" name="details" rows="4" required minlength="10" maxlength="3000"></textarea></div>
+          <button class="btn btn-maroon">Submit</button></form></div>
+          <div class="col-lg-6"><div class="pf-card p-4"><h5>Your complaints</h5><div id="complaints" class="small"></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/customer.js"></script>
+</body>
+</html>

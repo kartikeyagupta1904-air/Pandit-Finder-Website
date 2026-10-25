@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — Pandit Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="dash-header"><div class="container"><div class="small opacity-75">Administration</div><h1 class="h2 mb-0">Admin Dashboard</h1></div></div>
+  <div class="container dash-body">
+    <ul class="nav nav-pills pf-tabs mb-3 pf-card p-2" role="tablist" id="adminTabs">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#overview" type="button">Overview</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#verifications" type="button">Verifications <span class="badge bg-warning text-dark" id="pvBadge"></span></button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#users" type="button">Users</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#bookings" type="button">Bookings</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#categories" type="button">Categories</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#complaints" type="button">Reports & complaints</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#reviews" type="button">Reviews</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#audit" type="button">Audit log</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#settings" type="button">Settings</button></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="overview">
+        <div class="row g-3 mb-4" id="adminStats"></div>
+        <div class="row g-4">
+          <div class="col-lg-8"><div class="pf-card p-4"><h5>Booking requests — last 30 days</h5><canvas id="chartDaily" height="120" role="img" aria-label="Bookings per day"></canvas></div></div>
+          <div class="col-lg-4"><div class="pf-card p-4"><h5>Bookings by status</h5><canvas id="chartStatus" height="220" role="img" aria-label="Bookings by status"></canvas></div></div>
+          <div class="col-12"><div class="pf-card p-4"><h5>Recent admin activity</h5><div id="activity" class="small"></div></div></div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="verifications"><div class="pf-card">
+        <div class="p-3 border-bottom d-flex gap-2 align-items-center"><label class="small text-muted" for="vStatus">Show</label>
+          <select id="vStatus" class="form-select form-select-sm w-auto"><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></div>
+        <div class="table-responsive"><table class="table mb-0 align-middle"><thead><tr><th>Applicant</th><th>City</th><th>Experience</th><th>Docs</th><th>Applied</th><th>Status</th><th></th></tr></thead><tbody id="vBody"></tbody></table></div></div></div>
+      <div class="tab-pane fade" id="users"><div class="pf-card">
+        <div class="p-3 border-bottom d-flex flex-wrap gap-2"><input class="form-control form-control-sm w-auto" id="uQ" placeholder="Search name or email" aria-label="Search users">
+          <select id="uRole" class="form-select form-select-sm w-auto" aria-label="Role"><option value="">All roles</option><option value="customer">Customers</option><option value="pandit">Pandits</option><option value="admin">Admins</option></select></div>
+        <div class="table-responsive"><table class="table mb-0 align-middle"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Joined</th><th></th></tr></thead><tbody id="uBody"></tbody></table></div></div></div>
+      <div class="tab-pane fade" id="bookings"><div class="pf-card">
+        <div class="p-3 border-bottom d-flex flex-wrap gap-2"><input class="form-control form-control-sm w-auto" id="bQ" placeholder="Booking ID or name" aria-label="Search bookings">
+          <select id="bStatus" class="form-select form-select-sm w-auto" aria-label="Status"><option value="">All statuses</option><option>pending</option><option>accepted</option><option>confirmed</option><option>completed</option><option>rejected</option><option>cancelled</option></select></div>
+        <div class="table-responsive"><table class="table mb-0 align-middle"><thead><tr><th>Booking</th><th>Date</th><th>Customer</th><th>Pandit</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody id="bBody"></tbody></table></div></div></div>
+      <div class="tab-pane fade" id="categories"><div class="row g-4">
+        <div class="col-lg-8"><div class="pf-card"><div class="table-responsive"><table class="table mb-0 align-middle"><thead><tr><th>Category</th><th>Services</th><th>Order</th><th>Status</th><th></th></tr></thead><tbody id="cBody"></tbody></table></div></div></div>
+        <div class="col-lg-4"><form class="pf-card p-4" id="catForm" novalidate><h5 id="catTitle">Add category</h5><div class="form-alert d-none"></div><input type="hidden" name="id">
+          <div class="mb-2"><label class="form-label" for="ctName">Name</label><input class="form-control" id="ctName" name="name" required></div>
+          <div class="mb-2"><label class="form-label" for="ctDesc">Description</label><textarea class="form-control" id="ctDesc" name="description" rows="2"></textarea></div>
+          <div class="row g-2 mb-2"><div class="col-7"><label class="form-label" for="ctIcon">Icon class</label><input class="form-control" id="ctIcon" name="icon" value="bi-flower1"></div>
+            <div class="col-5"><label class="form-label" for="ctOrder">Order</label><input type="number" class="form-control" id="ctOrder" name="sort_order" value="100"></div></div>
+          <div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="ctActive" name="is_active" checked><label class="form-check-label" for="ctActive">Active</label></div>
+          <div class="d-flex gap-2"><button class="btn btn-primary">Save</button><button type="button" class="btn btn-light d-none" id="catCancel">Cancel</button></div></form></div></div></div>
+      <div class="tab-pane fade" id="complaints"><div class="pf-card">
+        <div class="p-3 border-bottom d-flex flex-wrap gap-2"><select id="coKind" class="form-select form-select-sm w-auto" aria-label="Type"><option value="">All types</option><option value="profile_report">Profile reports</option><option value="complaint">Complaints</option></select>
+          <select id="coStatus" class="form-select form-select-sm w-auto" aria-label="Status"><option value="">All statuses</option><option value="open">Open</option><option value="in_review">In review</option><option value="resolved">Resolved</option><option value="dismissed">Dismissed</option></select></div>
+        <div id="coList"></div></div></div>
+      <div class="tab-pane fade" id="reviews"><div class="pf-card"><div id="rvList"></div></div></div>
+      <div class="tab-pane fade" id="audit"><div class="pf-card"><div class="table-responsive"><table class="table mb-0 small"><thead><tr><th>Time</th><th>Actor</th><th>Action</th><th>Entity</th><th>Details</th><th>IP</th></tr></thead><tbody id="aBody"></tbody></table></div>
+        <div class="p-3 d-flex gap-2"><button class="btn btn-sm btn-light" id="aPrev">Newer</button><button class="btn btn-sm btn-light" id="aNext">Older</button></div></div></div>
+      <div class="tab-pane fade" id="settings"><form class="pf-card p-4" id="setForm" style="max-width:720px" novalidate><h5>Platform settings</h5><div class="form-alert d-none"></div>
+        <div class="row g-3">
+          <div class="col-md-6"><label class="form-label" for="stCancel">Cancellation window (hours before ceremony)</label><input type="number" class="form-control" id="stCancel" name="cancellation_hours" min="0" max="720"></div>
+          <div class="col-md-6"><label class="form-label" for="stLead">Minimum booking notice (hours)</label><input type="number" class="form-control" id="stLead" name="min_lead_hours" min="0" max="720"></div>
+          <div class="col-md-6"><label class="form-label" for="stAdv">Maximum advance booking (days)</label><input type="number" class="form-control" id="stAdv" name="max_advance_days" min="7" max="730"></div>
+          <div class="col-md-6"><label class="form-label" for="stRet">Delete verification documents after (days)</label><input type="number" class="form-control" id="stRet" name="document_retention_days" min="1" max="3650"></div>
+          <div class="col-md-6"><label class="form-label" for="stEmail">Support email</label><input class="form-control" id="stEmail" name="support_email"></div>
+          <div class="col-md-6"><label class="form-label" for="stPhone">Support phone</label><input class="form-control" id="stPhone" name="support_phone"></div>
+          <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="stApps" name="allow_new_pandit_applications"><label class="form-check-label" for="stApps">Accept new pandit applications</label></div></div>
+        </div>
+        <div id="integrations" class="small mt-3"></div>
+        <button class="btn btn-primary mt-3">Save settings</button></form></div>
+    </div>
+  </div>
+</main>
+
+<div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appTitle" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-scrollable"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="appTitle">Application</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body" id="appBody"></div>
+  <div class="modal-footer flex-column align-items-stretch" id="appFooter"></div>
+</div></div></div>
+
+<div id="site-footer"></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/chart.js/chart.umd.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
